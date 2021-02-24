@@ -47,6 +47,10 @@ local function worker(user_args)
         get_brightness_cmd = 'xbacklight -get'
         inc_brightness_cmd = 'xbacklight -inc ' .. step
         dec_brightness_cmd = 'xbacklight -dec ' .. step
+    elseif program == 'brightnessctl' then
+        get_brightness_cmd = 'brightnessctl get'
+        inc_brightness_cmd = 'brightnessctl set +' .. step
+        dec_brightness_cmd = 'brightnessctl set ' .. step .. '-'
     else
         show_warning(program .. " command is not supported by the widget")
         return
@@ -85,7 +89,7 @@ local function worker(user_args)
                 valigh = 'center',
                 layout = wibox.container.place
             },
-            max_value = 100,
+            max_value = 255,
             thickness = 2,
             start_angle = 4.71238898, -- 2pi*3/4
             forced_height = 18,
