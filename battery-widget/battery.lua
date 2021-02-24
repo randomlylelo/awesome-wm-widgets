@@ -60,7 +60,8 @@ local function worker(user_args)
             widget = wibox.widget.imagebox,
             resize = false
         },
-        bottom = 3,
+        top = 8,
+        right = 2,
         layout = wibox.container.margin
     }
     local level_widget = wibox.widget {
